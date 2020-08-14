@@ -1,18 +1,16 @@
-
 import bs4 as bs
 import requests
-import spacy
-nlp = spacy.load('en_core_web_sm')
 import re
 from collections import Counter
 from heapq import nlargest
 
+import spacy
+nlp = spacy.load('en_core_web_sm')
 
-def search(query, no_of_sentences):
-    headers = {'User-Agent': 'nishan'}
+def search(search_query, no_of_sentences):
+    headers = {'User-Agent': 'github.com/nishan7'}
     url = 'https://en.wikipedia.org/w/rest.php/v1/search/page'
-    search_result = requests.get(url, headers=headers, params={'q': query, 'limit': 1}).json()['pages'][0]
-    # print(search_result)
+    search_result = requests.get(url, headers=headers, params={'q': search_query, 'limit': 1}).json()['pages'][0]
 
     page = requests.get('https://en.wikipedia.org/w/rest.php/v1/page/{}/with_html'.format(search_result['key']),
                         headers=headers).json()
@@ -61,4 +59,4 @@ def search(query, no_of_sentences):
         print(n[0])
 
 
-search('Earth', 5)
+search(search_query='Earth', no_of_sentences=5)
