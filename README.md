@@ -4,7 +4,7 @@ spaCy  to create the summary of wikipedia article
 
 #### Wikipedia
 It uses wikipedia REST API to search for the article and 
-get the data from the article
+get the data from the article.
 
 API:
 https://en.wikipedia.org/w/rest.php
